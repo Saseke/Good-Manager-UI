@@ -12,8 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import {mailFolderListItems, otherMailFolderListItems} from '../data/tileData';
-import GoodTable from './table/GoodsTable';
+import NestedList from '../components/NestedList';
+import CommonRouter from '../router/CommonRouter';
 
 const drawerWidth = 240;
 
@@ -136,9 +136,7 @@ class GoodsDrawer extends React.Component {
           </IconButton>
         </div>
         <Divider/>
-        <List>{mailFolderListItems}</List>
-        <Divider/>
-        <List>{otherMailFolderListItems}</List>
+        <List><NestedList/></List>
       </Drawer>
     );
 
@@ -175,16 +173,6 @@ class GoodsDrawer extends React.Component {
             </Toolbar>
           </AppBar>
           {before}
-          {/*      <main
-            style={{height: '100%'}}
-            className={classNames(classes.content, classes[`content-${anchor}`], {
-              [classes.contentShift]: open,
-              [classes[`contentShift-${anchor}`]]: open,
-            })}
-          >
-            <div className={classes.drawerHeader}/>
-            <Typography>{'Hello Come Good Manager'}</Typography>
-          </main>*/}
           <main
             className={classNames(classes.content, classes[`content-${anchor}`], {
               [classes.contentShift]: open,
@@ -192,7 +180,7 @@ class GoodsDrawer extends React.Component {
             })}
           >
             <div className={classes.drawerHeader}/>
-            <GoodTable/>
+            <CommonRouter/>
           </main>
           {after}
         </div>

@@ -7,8 +7,9 @@ import * as PropTypes from 'prop-types';
 import {lighten} from '@material-ui/core/es/styles/colorManipulator';
 import withStyles from '@material-ui/core/es/styles/withStyles';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import classNames from 'classnames';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button/Button';
 
 const toolbarStyles = theme => ({
   root: {
@@ -33,13 +34,16 @@ const toolbarStyles = theme => ({
   title: {
     flex: '0 0 auto',
   },
+  button: {
+    margin: theme.spacing.unit,
+  },
 });
 
 class GoodsTableBar extends React.Component {
 
   render() {
 
-    const {classes, numSelected} = this.props;
+    const {classes, numSelected, barTitle} = this.props;
     return (
       <div>
         <Toolbar
@@ -54,7 +58,7 @@ class GoodsTableBar extends React.Component {
               </Typography>
             ) : (
               <Typography variant="title" id="tableTitle">
-                Nutrition
+                {barTitle}
               </Typography>
             )}
           </div>
@@ -67,10 +71,10 @@ class GoodsTableBar extends React.Component {
                 </IconButton>
               </Tooltip>
             ) : (
-              <Tooltip title="Filter list">
-                <IconButton aria-label="Filter list">
-                  <FilterListIcon/>
-                </IconButton>
+              <Tooltip title="添加">
+                <Button variant="fab" color="primary" aria-label="Add" className={classes.button}>
+                  <AddIcon/>
+                </Button>
               </Tooltip>
             )}
           </div>
@@ -82,6 +86,7 @@ class GoodsTableBar extends React.Component {
 
 GoodsTableBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired
+  numSelected: PropTypes.number.isRequired,
+  barTitle: PropTypes.string.isRequired
 };
 export default GoodsTableBar = withStyles(toolbarStyles)(GoodsTableBar);

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import GoodDrawer from './components/GoodsDrawer';
+import GoodsDrawer from './components/GoodsDrawer';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <GoodDrawer/>
+        <GoodsDrawer/>
       </div>
     );
   }
